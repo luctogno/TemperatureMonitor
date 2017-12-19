@@ -1,0 +1,52 @@
+{
+  "projectType": [
+    "sap.watt.uitools.ide.fiori",
+    "com.sap.webide.hybrid.cordova"
+  ],
+  "generation": [
+    {
+      "templateId": "ui5template.basicSAPUI5ApplicationProject",
+      "templateVersion": "1.32.0",
+      "dateTimeStamp": "Wed, 13 Jan 2016 12:56:36 GMT"
+    },
+    {
+      "templateId": "servicecatalog.connectivityComponent",
+      "templateVersion": "0.0.0",
+      "dateTimeStamp": "Wed, 13 Jan 2016 12:57:19 GMT"
+    },
+    {
+      "templateId": "wysiwygtemplate.quickStart",
+      "templateVersion": "0.0.0",
+      "dateTimeStamp": "Mon, 18 Dec 2017 09:09:16 GMT"
+    },
+    {
+      "templateId": "ui5template.basicSAPUI5ApplicationComponent",
+      "templateVersion": "1.4.0",
+      "dateTimeStamp": "Mon, 18 Dec 2017 10:17:06 GMT"
+    }
+  ],
+  "translation": {
+    "translationDomain": "07",
+    "supportedLanguages": "en,fr,de,it",
+    "defaultLanguage": "en",
+    "defaultI18NPropertyFile": "i18n.properties",
+    "resourceModelName": "i18n"
+  },
+  "dataBinding": {
+    "/webapp/view/Temperature.view.xml": {
+      "entitySet": "Entity1_Set"
+    }
+  },
+  "mockpreview": {
+    "mockUri": "localService/metadata.xml",
+    "metadataFilePath": "localService/metadata.xml",
+    "loadJSONFiles": true,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "hcpdeploy": {
+    "account": "p1942250341trial",
+    "name": "temperaturemonitor",
+    "lastVersionWeTriedToDeploy": "1.0.0"
+  }
+}

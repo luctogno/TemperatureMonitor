@@ -1,0 +1,76 @@
+<mvc:View
+		height="100%"
+		xmlns:core="sap.ui.core"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+        controllerName="TemperatureMonitor.controller.Temperature"
+		xmlns:semantic="sap.m.semantic"
+		displayBlock="true">
+	<App>
+	<SplitContainer>
+		<masterPages>
+			<semantic:MasterPage title="{i18n>ui.masterpage.title}">
+				<semantic:sort>
+					<semantic:SortSelect change="onSemanticSelectChange"
+											 items="{
+							path: '/ProductCollectionStats/Filters',
+							sorter: { path: 'Name' }
+							}">
+						<core:Item key="{type}" text="{type}" />
+					</semantic:SortSelect>
+				</semantic:sort>
+				<semantic:filter>
+					<semantic:FilterAction press="onSemanticButtonPress"/>
+				</semantic:filter>
+			</semantic:MasterPage>
+		</masterPages>
+		<detailPages>
+			<semantic:DetailPage
+					title="{i18n>ui.masterpage.messages}">
+				<semantic:printAction>
+					<semantic:PrintAction press="onSemanticButtonPressSeeChart"/>
+				</semantic:printAction>
+				<semantic:messagesIndicator>
+					<semantic:MessagesIndicator press="onMessagesButtonPress"/>
+				</semantic:messagesIndicator>
+				<semantic:pagingAction>
+					<PagingButton count="5" positionChange="onPositionChange"/>
+				</semantic:pagingAction>
+
+				<!--CONTENT-->
+				<Table id="table0" items="{/messages}" noDataText="No Data">
+						<items>
+							<ColumnListItem counter="0" id="item1" detailPress="pippo">
+								<cells>
+									<Text id="text5" maxLines="0" text="{device}"/>
+									<Text id="text6" maxLines="0" text="{path:'sysTimestamp', format:{pattern:'dd-MM-YYYY'}}"/>
+									<Text id="text7" maxLines="0" text="{dato}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column id="column0">
+								<header>
+									<Label id="label0" text="{i18n>ui.table.dispositivo}"/>
+								</header>
+							</Column>
+							<Column id="column1">
+								<header>
+									<Label id="label1" text="{i18n>ui.table.timestamp}"/>
+								</header>
+							</Column>
+							<Column id="column2">
+								<header>
+									<Label id="label2" text="{i18n>ui.table.temperatura}"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+
+			</semantic:DetailPage>
+
+		</detailPages>
+
+	</SplitContainer></App>
+
+</mvc:View>
