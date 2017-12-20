@@ -13,7 +13,7 @@ sap.ui.define([
 		onInit: function() {
 			var that = this;
 
-			$.getJSON("../localService/mockdata/Entity1_Set.json", function(data) {
+			jQuery.getJSON("https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/", function(data) {
 				var oModel = new JSONModel(data) ;
 				that.getView().setModel(oModel);
 			});
