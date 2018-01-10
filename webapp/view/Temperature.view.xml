@@ -1,5 +1,4 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic" height="100%"
-	controllerName="TemperatureMonitor.controller.Temperature" displayBlock="true">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic" height="100%" controllerName="TemperatureMonitor.controller.Temperature" displayBlock="true">
 	<App>
 		<SplitContainer>
 			<masterPages>
@@ -9,13 +8,8 @@
 							<StandardListItem type="Navigation" title="{device}" press="onPress"/>
 						</items>
 					</List>
-					<semantic:sort>
-						<semantic:SortSelect change="onSemanticSelectChange" items="{ path: '/ProductCollectionStats/Filters', sorter: { path: 'Name' } }">
-							<core:Item key="{type}" text="{type}"/>
-						</semantic:SortSelect>
-					</semantic:sort>
 					<semantic:filter>
-						<semantic:FilterAction press="onSemanticButtonPress"/>
+						<semantic:FilterAction press="handleOpenDialog"/>
 					</semantic:filter>
 				</semantic:MasterPage>
 			</masterPages>

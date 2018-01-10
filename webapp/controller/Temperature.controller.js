@@ -3,8 +3,9 @@ sap.ui.define([
 	'sap/ui/core/mvc/Controller',
 	'sap/ui/model/json/JSONModel',
 	'sap/m/MessagePopover',
-	'sap/m/MessagePopoverItem'
-], function(jQuery, Controller, JSONModel, MessagePopover, MessagePopoverItem) {
+	'sap/m/MessagePopoverItem',
+	'sap/m/MessageToast'
+], function(jQuery, Controller, JSONModel, MessagePopover, MessagePopoverItem, MessageToast) {
 	"use strict";
 	return Controller.extend("TemperatureMonitor.controller.Temperature", {
 		/**
@@ -81,6 +82,23 @@ sap.ui.define([
 		},
 		onSemanticButtonPressSeeChart: function(oEvent) {
 			
+		},
+		
+		_getDialog : function () {
+			if (!this._oDialog) {
+				this._oDialog = sap.ui.xmlfragment("TemperatureMonitor.view.Dialog", this);
+				this.getView().addDependent(this._oDialog);
+			}
+			return this._oDialog;
+		},
+		handleOpenDialog: function () {
+			this._getDialog().open();
+		},
+		
+		handleConfirm: function (oEvent) {
+			if (oEvent.getParameters().filterString) {
+				MessageToast.show(oEvent.getParameters().filterString);
+			}
 		}
 	});
 });

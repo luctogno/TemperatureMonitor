@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog>
+		
+		<content>
+<Label text="simple DateTimePicker" labelFor="DTP1"/>
+		<DateTimePicker
+			id="DTP1"
+			placeholder="Enter Date ..."
+			change="handleChange"/>
+		<Label text="DateTimePicker with given Value and Formatter" labelFor="DTP2"/>
+		<DateTimePicker
+			id="DTP2"
+			value="2016-02-18-10-32-30" valueFormat="yyyy-MM-dd-HH-mm-ss" displayFormat="long"
+			change="handleChange"/>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>
