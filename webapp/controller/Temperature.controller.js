@@ -39,13 +39,10 @@ sap.ui.define([
 		onPress: function(oEvent) {
 			var that = this;
 			var oModel = that.getView().getModel();
-			console.log("ciao");
-			var url = "https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/devices?named=" + oEvent.getSource().getId();
+			var url = "https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/devices?named=" + oEvent.getSource().getBindingContext().getObject().device;
 			jQuery.getJSON(url, function(data) {
 				oModel.setProperty("/messages", data.messages);
 			});
-			
-			sap.m.MessageToast.show("Pressed custom button " + oEvent.getSource().getId());
 		},
 		onSemanticButtonPress: function(oEvent) {
 

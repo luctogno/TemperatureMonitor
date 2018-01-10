@@ -1,35 +1,37 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic" height="100%" controllerName="TemperatureMonitor.controller.Temperature" displayBlock="true">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.m.semantic" height="100%"
+	controllerName="TemperatureMonitor.controller.Temperature" displayBlock="true">
 	<App>
-	<SplitContainer>
-		<masterPages>
-			<semantic:MasterPage title="{i18n>ui.masterpage.title}">
-				<List items="{path: '/devices'}">
-		<StandardListItem title="{device}" press="onPress" tap="onPress"/>
-	</List>
-				<semantic:sort>
-					<semantic:SortSelect change="onSemanticSelectChange" items="{        path: '/ProductCollectionStats/Filters',        sorter: { path: 'Name' }        }">
-						<core:Item key="{type}" text="{type}"/>
-					</semantic:SortSelect>
-				</semantic:sort>
-				<semantic:filter>
-					<semantic:FilterAction press="onSemanticButtonPress"/>
-				</semantic:filter>
-			</semantic:MasterPage>
-		</masterPages>
-		<detailPages>
-			<semantic:DetailPage title="{i18n>ui.masterpage.messages}">
-				<semantic:printAction>
-					<semantic:PrintAction press="onSemanticButtonPressSeeChart"/>
-				</semantic:printAction>
-				<semantic:messagesIndicator>
-					<semantic:MessagesIndicator press="onMessagesButtonPress"/>
-				</semantic:messagesIndicator>
-				<semantic:pagingAction>
-					<PagingButton count="5" positionChange="onPositionChange"/>
-				</semantic:pagingAction>
-
-				<!--CONTENT-->
-				<Table id="table0" items="{/messages}" noDataText="No Data">
+		<SplitContainer>
+			<masterPages>
+				<semantic:MasterPage title="{i18n>ui.masterpage.title}">
+					<List noDataText="Drop list items here" items="{/devices}">
+						<items>
+							<StandardListItem type="Navigation" title="{device}" press="onPress"/>
+						</items>
+					</List>
+					<semantic:sort>
+						<semantic:SortSelect change="onSemanticSelectChange" items="{ path: '/ProductCollectionStats/Filters', sorter: { path: 'Name' } }">
+							<core:Item key="{type}" text="{type}"/>
+						</semantic:SortSelect>
+					</semantic:sort>
+					<semantic:filter>
+						<semantic:FilterAction press="onSemanticButtonPress"/>
+					</semantic:filter>
+				</semantic:MasterPage>
+			</masterPages>
+			<detailPages>
+				<semantic:DetailPage title="{i18n>ui.masterpage.messages}">
+					<semantic:printAction>
+						<semantic:PrintAction press="onSemanticButtonPressSeeChart"/>
+					</semantic:printAction>
+					<semantic:messagesIndicator>
+						<semantic:MessagesIndicator press="onMessagesButtonPress"/>
+					</semantic:messagesIndicator>
+					<semantic:pagingAction>
+						<PagingButton count="5" positionChange="onPositionChange"/>
+					</semantic:pagingAction>
+					<!--CONTENT-->
+					<Table id="table0" items="{/messages}" noDataText="No Data">
 						<items>
 							<ColumnListItem counter="0" id="item1" detailPress="pippo">
 								<cells>
@@ -57,11 +59,8 @@
 							</Column>
 						</columns>
 					</Table>
-
-			</semantic:DetailPage>
-
-		</detailPages>
-
-	</SplitContainer></App>
-
+				</semantic:DetailPage>
+			</detailPages>
+		</SplitContainer>
+	</App>
 </mvc:View>

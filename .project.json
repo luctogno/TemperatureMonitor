@@ -32,15 +32,11 @@
     "defaultI18NPropertyFile": "i18n.properties",
     "resourceModelName": "i18n"
   },
-  "dataBinding": {
-    "/webapp/view/Temperature.view.xml": {
-      "entitySet": "Entity1_Set"
-    }
-  },
+  "dataBinding": {},
   "mockpreview": {
     "mockUri": "localService/metadata.xml",
     "metadataFilePath": "localService/metadata.xml",
-    "loadJSONFiles": true,
+    "loadJSONFiles": false,
     "loadCustomRequests": false,
     "mockRequestsFilePath": ""
   },
