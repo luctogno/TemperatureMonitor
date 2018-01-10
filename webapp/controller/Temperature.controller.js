@@ -10,14 +10,17 @@ sap.ui.define([
 		/**
 		 *@memberOf TemperatureMonitor.controller.Temperature
 		 */
+		 
+		 //https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/deviceslist
 		onInit: function() {
 			var that = this;
+			var oModel = new JSONModel({}) ;
+			that.getView().setModel(oModel);
 
-			jQuery.getJSON("https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/", function(data) {
-				var oModel = new JSONModel(data) ;
-				that.getView().setModel(oModel);
+			jQuery.getJSON("https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/deviceslist", function(data) {
+				oModel.setProperty("/devices", data.devices);
 			});
-
+			
 			var oMessageProcessor = new sap.ui.core.message.ControlMessageProcessor();
 			var oMessageManager = sap.ui.getCore().getMessageManager();
 
@@ -31,8 +34,17 @@ sap.ui.define([
 				})
 			);
 		},
+		
+		
 		onPress: function(oEvent) {
-
+			var that = this;
+			var oModel = that.getView().getModel();
+			console.log("ciao");
+			var url = "https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/devices?named=" + oEvent.getSource().getId();
+			jQuery.getJSON(url, function(data) {
+				oModel.setProperty("/messages", data.messages);
+			});
+			
 			sap.m.MessageToast.show("Pressed custom button " + oEvent.getSource().getId());
 		},
 		onSemanticButtonPress: function(oEvent) {

@@ -11,7 +11,7 @@ sap.ui.define([
 			oModel.setDefaultBindingMode("OneWay");
 			return oModel;
 		},
-		dateFormatBackend: "yyyy-MM-dd'T'hh:mm:ss.SSS'Z'",
+		dateFormatBackend: "yyyy-MM-dd'T'hh:mm:ss.SSSSSS'Z'",
 		dateFormatDisplay: "dd-MM-yyyy hh:mm:ss"
 
 	};
