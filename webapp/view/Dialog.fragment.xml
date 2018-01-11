@@ -4,16 +4,17 @@
 	<Dialog>
 		
 		<content>
-<Label text="simple DateTimePicker" labelFor="DTP1"/>
+		<Label text="{i18n>ui.dialog.startDate}" labelFor="DTP1" height="500px" width="500px"/>
 		<DateTimePicker
 			id="DTP1"
-			placeholder="Enter Date ..."
+			value="{/startDate}" placeholder="{i18n>ui.dialog.placeholder}"
 			change="handleChange"/>
-		<Label text="DateTimePicker with given Value and Formatter" labelFor="DTP2"/>
+		<Label text="{i18n>ui.dialog.endDate}" labelFor="DTP2"/>
 		<DateTimePicker
 			id="DTP2"
-			value="2016-02-18-10-32-30" valueFormat="yyyy-MM-dd-HH-mm-ss" displayFormat="long"
+			value="{/endDate}" displayFormat="DD/MM/yyyy HH:mm:ss.SSS"
 			change="handleChange"/>
 		</content>
+		<Button text="{i18n>ui.dialog.confirm}" press="handleConfirm"></Button>
 	</Dialog>
 </core:FragmentDefinition>
