@@ -2,9 +2,9 @@
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 	<Dialog
-		id="DialogDate">
+		id="DialogDate" height="500px" width="500px">
 		<content>
-		<Label text="{i18n>ui.dialog.startDate}" labelFor="DTP1" height="500px" width="500px"/>
+		<Label text="{i18n>ui.dialog.startDate}" labelFor="DTP1" />
 		<DateTimePicker
 			id="DTP1"
 			value="{/startDate}" placeholder="{i18n>ui.dialog.placeholder}"

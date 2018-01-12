@@ -18,7 +18,7 @@ sap.ui.define([
 			var oModel = new JSONModel({}) ;
 			that.getView().setModel(oModel);
 
-			jQuery.getJSON("https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/deviceslist/", function(data) {
+			jQuery.getJSON("https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/deviceslist", function(data) {
 				oModel.setProperty("/devices", data.devices);
 			});
 			
@@ -96,22 +96,17 @@ sap.ui.define([
 		},
 		
 		handleConfirm: function (oEvent) {
-			//var oText = this.byId("DTP1");
-			//sap.m.MessageToast.show(oText.toString());
-			/*var oDTP = oEvent.oSource;
-			
-			var sValue = oEvent.getParameter("value");
-			var bValid = oEvent.getParameter("valid");*/
-			//id="DTP1"
-			//var oDTP = oEvent.oSource;
 			var oView = this.getView();
+			
+			var oModel = this.getView().getModel();
+			
 			var oDialog = oView.byId("DialogDate");
-			var Data = oDialog.byId("DTP1");
-			sap.m.MessageToast.show(Data.toLocaleString());
-			//sap.m.MessageToast.show(this._getDialog().);
-			//sap.ui.fragment("DialogDate", "DTP1"); 
-			//sap.m.MessageToast.show(this.getView().byId("DTP1").toString());
-			this._getDialog().close();
+			
+			var startDate = oModel.getProperty("/startDate");
+			var endDate = oModel.getProperty("/endDate");
+			sap.m.MessageToast.show(startDate.toLocaleString() + " / " + endDate.toLocaleString());
+
+			oDialog.close();
 		}
 	});
 });
