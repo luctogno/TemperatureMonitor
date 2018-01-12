@@ -96,8 +96,19 @@ sap.ui.define([
 		},
 		
 		handleConfirm: function (oEvent) {
+			//var oText = this.byId("DTP1");
+			//sap.m.MessageToast.show(oText.toString());
+			/*var oDTP = oEvent.oSource;
+			
+			var sValue = oEvent.getParameter("value");
+			var bValid = oEvent.getParameter("valid");*/
 			//id="DTP1"
-			//sap.m.MessageToast.show("prova");
+			//var oDTP = oEvent.oSource;
+			var oView = this.getView();
+			var oDialog = oView.byId("DialogDate");
+			var Data = oDialog.byId("DTP1");
+			sap.m.MessageToast.show(Data.toLocaleString());
+			//sap.m.MessageToast.show(this._getDialog().);
 			//sap.ui.fragment("DialogDate", "DTP1"); 
 			//sap.m.MessageToast.show(this.getView().byId("DTP1").toString());
 			this._getDialog().close();
