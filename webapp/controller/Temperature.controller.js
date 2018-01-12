@@ -142,14 +142,11 @@ sap.ui.define([
 				}
 			}
 			
-			
 			sap.m.MessageToast.show(url);
 			jQuery.getJSON(url, function(data) {
 				oModel.setProperty("/messages", data.messages);
 			});
 			
-			
-
 			//oDialog.close();
 			this._getDialog().close();
 		}
