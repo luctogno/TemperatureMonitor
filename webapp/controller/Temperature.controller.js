@@ -18,7 +18,7 @@ sap.ui.define([
 			var oModel = new JSONModel({}) ;
 			that.getView().setModel(oModel);
 
-			jQuery.getJSON("https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/deviceslist", function(data) {
+			jQuery.getJSON("https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/deviceslist/", function(data) {
 				oModel.setProperty("/devices", data.devices);
 			});
 			
@@ -96,9 +96,11 @@ sap.ui.define([
 		},
 		
 		handleConfirm: function (oEvent) {
-			if (oEvent.getParameters().filterString) {
-				MessageToast.show(oEvent.getParameters().filterString);
-			}
+			//id="DTP1"
+			//sap.m.MessageToast.show("prova");
+			//sap.ui.fragment("DialogDate", "DTP1"); 
+			//sap.m.MessageToast.show(this.getView().byId("DTP1").toString());
+			this._getDialog().close();
 		}
 	});
 });

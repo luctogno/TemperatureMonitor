@@ -1,8 +1,8 @@
 <core:FragmentDefinition
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<Dialog>
-		
+	<Dialog
+		id="DialogDate">
 		<content>
 		<Label text="{i18n>ui.dialog.startDate}" labelFor="DTP1" height="500px" width="500px"/>
 		<DateTimePicker
@@ -12,7 +12,7 @@
 		<Label text="{i18n>ui.dialog.endDate}" labelFor="DTP2"/>
 		<DateTimePicker
 			id="DTP2"
-			value="{/endDate}" displayFormat="DD/MM/yyyy HH:mm:ss.SSS"
+			value="{/endDate}" placeholder="{i18n>ui.dialog.placeholder}"
 			change="handleChange"/>
 		</content>
 		<Button text="{i18n>ui.dialog.confirm}" press="handleConfirm"></Button>
