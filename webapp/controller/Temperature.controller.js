@@ -13,11 +13,15 @@ sap.ui.define([
 		 */
 		 
 		 //https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/deviceslist
+		 //4f8e0630-042a-46ea-9dfa-30daf6f9cda1
 		onInit: function() {
 			var that = this;
 			var oModel = new JSONModel({}) ;
 			that.getView().setModel(oModel);
-
+			
+			//solo per prova, per capire se l'url alla fine con i filtri è giusto
+			oModel.setProperty("/selectedDevice", "4f8e0630-042a-46ea-9dfa-30daf6f9cda1");
+			
 			jQuery.getJSON("https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/deviceslist", function(data) {
 				oModel.setProperty("/devices", data.devices);
 			});
@@ -40,9 +44,11 @@ sap.ui.define([
 		onPress: function(oEvent) {
 			var that = this;
 			var oModel = that.getView().getModel();
-			var url = "https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/devices?named=" + oEvent.getSource().getBindingContext().getObject().device;
+			var devSel = oEvent.getSource().getBindingContext().getObject().device;
+			var url = "https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/devices?named=" + devSel;
 			jQuery.getJSON(url, function(data) {
 				oModel.setProperty("/messages", data.messages);
+				//oModel.setProperty("/selectedDevice", devSel);
 			});
 		},
 		onSemanticButtonPress: function(oEvent) {
@@ -96,6 +102,7 @@ sap.ui.define([
 		},
 		
 		handleConfirm: function (oEvent) {
+			/*
 			var oView = this.getView();
 			
 			var oModel = this.getView().getModel();
@@ -105,8 +112,46 @@ sap.ui.define([
 			var startDate = oModel.getProperty("/startDate");
 			var endDate = oModel.getProperty("/endDate");
 			sap.m.MessageToast.show(startDate.toLocaleString() + " / " + endDate.toLocaleString());
+			*/
+			var oView = this._getDialog();
+			
+			var oModel = this._getDialog().getModel();
+			
+			//var oDialog = oView.byId("DialogDate");
+			
+			var startDate = oModel.getProperty("/startDate");
+			var endDate = oModel.getProperty("/endDate");
+			
+			//sap.m.MessageToast.show(startDate.toLocaleString() + " / " + endDate.toLocaleString());
+			
+			var url = "https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/devices?named=";// + oEvent.getSource().getBindingContext().getObject().device;
+			url += oModel.getProperty("/selectedDevice");
+			var unixStart = "";
+			var unixEnd = "";
+			
+			try {
+				unixStart = (new Date(startDate).getTime() / 1000);
+				unixEnd = (new Date(endDate).getTime() / 1000);
+			} catch (err) {
+				null;
+			} 
+			if (!isNaN(unixStart)){ 
+				url += "&start=" + unixStart; 
+				if (!isNaN(unixEnd)) {
+					url += "&end=" + unixEnd;
+				}
+			}
+			
+			
+			sap.m.MessageToast.show(url);
+			jQuery.getJSON(url, function(data) {
+				oModel.setProperty("/messages", data.messages);
+			});
+			
+			
 
-			oDialog.close();
+			//oDialog.close();
+			this._getDialog().close();
 		}
 	});
 });
