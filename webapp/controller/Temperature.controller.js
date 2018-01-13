@@ -137,7 +137,7 @@ sap.ui.define([
 			if (!isNaN(unixStart)){ 
 				url += "&start=" + unixStart; 
 				if (!isNaN(unixEnd)) {
-					url += "&end=" + unixEnd;
+					url += "&stop=" + unixEnd;
 				}
 			}
 			
