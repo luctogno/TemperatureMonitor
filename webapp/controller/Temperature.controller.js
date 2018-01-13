@@ -20,7 +20,7 @@ sap.ui.define([
 			that.getView().setModel(oModel);
 			
 			//solo per prova, per capire se l'url alla fine con i filtri è giusto
-			oModel.setProperty("/selectedDevice", "4f8e0630-042a-46ea-9dfa-30daf6f9cda1");
+			//oModel.setProperty("/selectedDevice", "4f8e0630-042a-46ea-9dfa-30daf6f9cda1");
 			
 			jQuery.getJSON("https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/deviceslist", function(data) {
 				oModel.setProperty("/devices", data.devices);
@@ -48,7 +48,7 @@ sap.ui.define([
 			var url = "https://hanaallp1942503320trial.hanatrial.ondemand.com/HanaAll/devices?named=" + devSel;
 			jQuery.getJSON(url, function(data) {
 				oModel.setProperty("/messages", data.messages);
-				//oModel.setProperty("/selectedDevice", devSel);
+				oModel.setProperty("/selectedDevice", devSel);
 			});
 		},
 		onSemanticButtonPress: function(oEvent) {
@@ -113,7 +113,6 @@ sap.ui.define([
 			var endDate = oModel.getProperty("/endDate");
 			sap.m.MessageToast.show(startDate.toLocaleString() + " / " + endDate.toLocaleString());
 			*/
-			var oView = this._getDialog();
 			
 			var oModel = this._getDialog().getModel();
 			

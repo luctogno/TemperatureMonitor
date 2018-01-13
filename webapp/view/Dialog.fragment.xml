@@ -1,10 +1,9 @@
 <core:FragmentDefinition
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<Dialog
-		id="DialogDate" height="500px" width="500px">
+	<Dialog>
 		<content>
-		<Label text="{i18n>ui.dialog.startDate}" labelFor="DTP1" />
+		<Label text="{i18n>ui.dialog.startDate}" labelFor="DTP1" height="500px" width="500px"/>
 		<DateTimePicker
 			id="DTP1"
 			value="{/startDate}" placeholder="{i18n>ui.dialog.placeholder}"
